@@ -13,10 +13,28 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(defpackage :restas-blog
-  (:use #:cl #:iterate #:postmodern))
-
 (in-package :restas-blog)
 
-(defparameter *path-to-posts* nil)
-(defparameter *db* nil)
+(defclass post ()
+  (id :col-type serial id-of)
+  (author :col-type integer :initarg :author :accessor author-of)
+  (title :col-type (varchar 255) :initarg :title :accessor title-of)
+  (:metaclass dao-class))
+
+(defun add-post (author title content))
+
+(defun get-post ())
+
+(defmethod remove-post ())
+
+(defun check-post-table-existence ()
+  (with-connection *db*
+    (table-exists-p (dao-table-name 'post))))
+
+(defun create-post-table ()
+  (with-connection *db*
+    (query (dao-table-definition 'post))))
+
+(defun init-userauth ()
+  (when (not (check-userauth-existence))
+    (create-post-table)))

@@ -18,6 +18,9 @@
 
 (in-package #:cl-restas-blog-asd)
 
-(defsystem restas-blog
+(defsystem cl-restas-blog
   :depends-on (:iterate :restas :postmodern :local-time :cl-postgres+local-time)
-  :components ((:file "cl-restas-blog")))
+  :components ((:file "cl-restas-blog")
+	       (:module src
+			:serial t
+			:components ((:file "post")))))
