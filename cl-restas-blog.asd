@@ -19,7 +19,7 @@
 (in-package #:cl-restas-blog-asd)
 
 (defsystem cl-restas-blog
-  :depends-on (:iterate :restas :postmodern :local-time :cl-postgres+local-time)
+  :depends-on (:iterate :restas :postmodern :local-time :cl-postgres+local-time :cl-fad :alexandria)
   :components ((:file "cl-restas-blog")
 	       (:module src
 			:serial t

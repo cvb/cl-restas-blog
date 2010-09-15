@@ -13,8 +13,10 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(defpackage :restas-blog
-  (:use #:cl #:iterate #:postmodern))
+(restas:define-module :restas-blog
+    (:use #:cl #:iterate #:postmodern)
+  (:export #:*path-to-posts*
+	   #:*db*))
 
 (in-package :restas-blog)
 
